@@ -1,0 +1,85 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "description": "New Custom Men's Plus Size Casual Men's Hawaiian Beach Shirts",
+            "price": 500.00,
+            "images": "./assets/images/product/p1.png"
+        },
+        {
+            "id": 1,
+            "description": "New Custom Men's Plus Size Casual Men's Hawaiian Beach Shirts",
+            "price": 500.00,
+            "images": "./assets/images/product/p2.png"
+        },
+        {
+            "id": 1,
+            "description": "New Custom Men's Plus Size Casual Men's Hawaiian Beach Shirts",
+            "price": 500.00,
+            "images": "./assets/images/product/p3.png"
+        },
+        {
+            "id": 1,
+            "description": "New Custom Men's Plus Size Casual Men's Hawaiian Beach Shirts",
+            "price": 500.00,
+            "images": "./assets/images/product/p4.png"
+        },
+        {
+            "id": 1,
+            "description": "New Custom Men's Plus Size Casual Men's Hawaiian Beach Shirts",
+            "price": 500.00,
+            "images": "./assets/images/product/p5.png"
+        },
+        {
+            "id": 1,
+            "description": "New Custom Men's Plus Size Casual Men's Hawaiian Beach Shirts",
+            "price": 500.00,
+            "images": "./assets/images/product/p6.png"
+        },
+        {
+            "id": 1,
+            "description": "New Custom Men's Plus Size Casual Men's Hawaiian Beach Shirts",
+            "price": 500.00,
+            "images": "./assets/images/product/p6.png"
+        },
+        {
+            "id": 1,
+            "description": "New Custom Men's Plus Size Casual Men's Hawaiian Beach Shirts",
+            "price": 500.00,
+            "images": "./assets/images/product/p5.png"
+        },
+        {
+            "id": 1,
+            "description": "New Custom Men's Plus Size Casual Men's Hawaiian Beach Shirts",
+            "price": 500.00,
+            "images": "./assets/images/product/p4.png"
+        },
+        {
+            "id": 1,
+            "description": "New Custom Men's Plus Size Casual Men's Hawaiian Beach Shirts",
+            "price": 500.00,
+            "images": "./assets/images/product/p3.png"
+        },
+        {
+            "id": 1,
+            "description": "New Custom Men's Plus Size Casual Men's Hawaiian Beach Shirts",
+            "price": 500.00,
+            "images": "./assets/images/product/p2.png"
+        },
+        {
+            "id": 1,
+            "description": "New Custom Men's Plus Size Casual Men's Hawaiian Beach Shirts",
+            "price": 500.00,
+            "images": "./assets/images/product/p1.png"
+        },
+        {
+            "id": 1,
+            "description": "New Custom Men's Plus Size Casual Men's Hawaiian Beach Shirts",
+            "price": 500.00,
+            "images": "./assets/images/product/p6.png"
+        }
+    ]
+}
+
+
+

@@ -1,0 +1,10 @@
+/* FONT  */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100&family=Raleway:wght@100;300;700&display=swap');
+
+/* Default Css  */
+@import 'antd/dist/antd.css';
+@import 'owl.carousel/dist/assets/owl.carousel.css';
+@import 'owl.carousel/dist/assets/owl.theme.default.css';
+/* Custom css */
+@import './assets/css/style.css';
+@import './assets/css/rasponsive.css';

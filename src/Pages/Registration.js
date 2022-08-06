@@ -32,7 +32,7 @@ function Registration() {
                   <h6>Service Provider</h6>
                   <p>Galley simply dummy text lorem Ipsum is of the printin  k a of type and</p>
                 </div>
-                <Link to="/" className='reg__btn_'> Sign Up Service Provider </Link>
+                <Link to="/services-provider-registration" className='reg__btn_'> Sign Up Service Provider </Link>
               </div>
             </div>
           </div>

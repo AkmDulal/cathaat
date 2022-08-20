@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap'
-import { PageHeader, Form, Input } from "antd";
+import { PageHeader, Form, Input, Radio } from "antd";
 import { StepPanel } from "./StepPanel";
 import { RiCheckDoubleFill } from "react-icons/ri";
 // import { Link } from 'react-router-dom'
@@ -11,6 +11,13 @@ function SubscriptionPackagFrom() {
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
+    form.setFieldsValue({
+        cFirstName: "Customer Name",
+        clastName: "Customer Last Name",
+        cEmail: "customer@gamil.com",
+        cContactno: "0123456789",
+        cAddress: "23, Ring Road, Shamoli, Dhaka",
+    });
     const Step1Form = () => {
         return (
             <>
@@ -90,7 +97,7 @@ function SubscriptionPackagFrom() {
                             </div>
                             <div className='col-lg-12'>
                                 <Form.Item
-                                    label="Contact No"
+                                    label="Address"
                                     name="contactno"
                                     className="form-group form-box"
                                     rules={[
@@ -130,7 +137,7 @@ function SubscriptionPackagFrom() {
                             <div className='col-lg-6'>
                                 <Form.Item
                                     label="First Name"
-                                    name="FirstName"
+                                    name="cFirstName"
                                     className="form-group form-box"
                                     rules={[
                                         {
@@ -145,7 +152,7 @@ function SubscriptionPackagFrom() {
                             <div className='col-lg-6'>
                                 <Form.Item
                                     label="Last Name"
-                                    name="lastName"
+                                    name="clastName"
                                     className="form-group form-box"
                                     rules={[
                                         {
@@ -160,7 +167,7 @@ function SubscriptionPackagFrom() {
                             <div className='col-lg-6'>
                                 <Form.Item
                                     label="Email"
-                                    name="email"
+                                    name="cEmail"
                                     className="form-group form-box"
                                     rules={[
                                         {
@@ -175,7 +182,7 @@ function SubscriptionPackagFrom() {
                             <div className='col-lg-6'>
                                 <Form.Item
                                     label="Contact No"
-                                    name="contactno"
+                                    name="cContactno"
                                     className="form-group form-box"
                                     rules={[
                                         {
@@ -189,8 +196,8 @@ function SubscriptionPackagFrom() {
                             </div>
                             <div className='col-lg-12'>
                                 <Form.Item
-                                    label="Contact No"
-                                    name="contactno"
+                                    label="Address"
+                                    name="cAddress"
                                     className="form-group form-box"
                                     rules={[
                                         {
@@ -200,6 +207,26 @@ function SubscriptionPackagFrom() {
                                     ]}
                                 >
                                     <TextArea className="form-control" rows={4} />
+                                </Form.Item>
+                            </div>
+                            <div className='col-lg-12'>
+                                <Form.Item
+                                    label="Payment Method"
+                                    name="cPaymentMethod"
+                                    className="form-group form-box"
+                                    rules={[
+                                        {
+                                            required: true,
+                                            message: 'Please input Payment Method!',
+                                        },
+                                    ]}
+                                >
+                                    <Radio.Group style={{ textAlign: "left" }}>
+                                        {/* <Radio defaultChecked={false} value={1}>Credit/Debit</Radio> */}
+                                        <Radio value={2}>bKash</Radio>
+                                        <Radio value={3}>Rocket</Radio>
+                                        {/* <Radio defaultChecked={false} value={4}>Offline Payment</Radio> */}
+                                    </Radio.Group>
                                 </Form.Item>
                             </div>
                         </div>

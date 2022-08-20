@@ -8,7 +8,6 @@ import axios from "../../Helper/Config";
 import { createCookieInHour, COOKIE_NAME } from '../../Helper/Cookies';
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
-// import { useJwt } from "react-jwt"
 
 function LoginPages() {
     // const { Option } = Select;
@@ -48,9 +47,7 @@ function LoginPages() {
                     );
                     axios.post("/auth/me")
                         .then(res => {
-                            if (res.data.code === 200) {
-                                // const token = jwt.sign({ foo: 'bar' }, 'shhhhh')
-                            }
+                            localStorage.setItem("Username", res.data.username)
                         })
                     redirect("/")
                 }

@@ -1375,6 +1375,8 @@ input.quantity__number {
 	padding: 25px;
 	background: #fff;
 	border-radius: 4px;
+	position: relative;
+	z-index: 2;
 }
 
 .feature-box svg {
@@ -1857,7 +1859,7 @@ input[type=radio] {
 }
 
 .ger___from {
-	width: 50%;
+	width: 70%;
 	background: #fff;
 	margin: auto;
 	padding: 35px;
@@ -2527,6 +2529,7 @@ input[type=radio] {
 	float: left;
 	display: block;
 	padding: 4px 0;
+	text-transform: capitalize;
 }
 .profile_menu_header .ant-space-align-center {
 	align-items: center;
@@ -2550,4 +2553,9 @@ input[type=radio] {
 }
 .ant-dropdown-menu-item, .ant-dropdown-menu-submenu-title {
 	font-size: 13px !important;
+}
+.logout__btn {
+	width: 100%;
+	background: transparent;
+	border: none;
 }

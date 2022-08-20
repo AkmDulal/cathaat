@@ -4,20 +4,21 @@ import { Link } from 'react-router-dom'
 import { RiCloseLine, RiHome2Line, RiUser3Line } from "react-icons/ri";
 import { DownOutlined } from '@ant-design/icons';
 import { SearchOutlined } from '@ant-design/icons';
-import axios from "../../Helper/Config";
+import { useNavigate } from "react-router-dom";
 import { Input, Modal, Form, Select, Dropdown, Menu, Space } from 'antd';
 import AuthService from "../../Helper/Auth.Services"
 import TopBanner from "../../assets/images/top_banner.jpg"
 import Logo from "../../assets/images/logo.png"
-
+import useAxiosPrivate from "../../Helper/useAxiosPrivate"
 // import useAxiosPrivate from "../../hooks/useAxiosPrivate";
-
+import { toast } from 'react-toastify';
 // COMPONENTS
 import Cart from "../Products/Cart"
 import MobileCatagories from "./MobileCatagories"
 function Header() {
     const userActive = AuthService.getCurrentUser();
-    console.log(typeof (userActive), "userActive")
+    const axiosPrivate = useAxiosPrivate();
+    const redirect = useNavigate()
     const [BannerShow, setBannerShow] = useState(true)
     const [ActiveToken, setActiveToken] = useState(false)
     // const axiosPrivate = useAxiosPrivate();
@@ -28,16 +29,6 @@ function Header() {
             setActiveToken(true)
         }
     }, [userActive])
-    useEffect(() => {
-        axios.post("/auth/me")
-            .then(res => {
-                console.log(res, "res res")
-                if (res.data.code === 200) {
-                    // const token = jwt.sign({ foo: 'bar' }, 'shhhhh')
-                }
-            })
-    }, [])
-
     const bannerOff = () => {
         setBannerShow(false)
     }
@@ -62,7 +53,19 @@ function Header() {
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
-    console.log('Failed:', ActiveToken);
+    const UserName = localStorage.getItem("Username") || ""
+    const LogoutFunction = () => {
+        // console.log(userLogout, "userLogoutuserLogout")
+        axiosPrivate.post("/auth/logout")
+            .then(res => {
+                console.log(res.data.message)
+                toast.dark(res.data.message, {
+                    position: toast.POSITION.BOTTOM_RIGHT
+                });
+                AuthService.logout()
+                redirect("/")
+            })
+    }
     const menu = (
         <Menu
             items={[
@@ -75,7 +78,7 @@ function Header() {
                 {
                     key: '2',
                     label: (
-                        <Link to="/"> Logout </Link>
+                        <button onClick={LogoutFunction} className='logout__btn'> Logout </button>
                     ),
                 },
             ]}
@@ -269,7 +272,7 @@ function Header() {
                                     <div className='profile_menu_header'>
                                         <Dropdown overlay={menu}>
                                             <Space>
-                                                Profile Name
+                                                {UserName}
                                                 <DownOutlined />
                                             </Space>
                                         </Dropdown>

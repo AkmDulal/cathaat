@@ -1,12 +1,35 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Input, Form } from 'antd';
+import { toast } from 'react-toastify';
+import { useNavigate } from "react-router-dom";
+import axios from "../../Helper/Config";
 
 function GeneralUserReg() {
     // const { Option } = Select;
     const [form] = Form.useForm();
+    const redirect = useNavigate();
     const onFinish = (values) => {
-        console.log('Success:', values);
+        const obj = {
+            first_name: `${values.first_name}`,
+            last_name: `${values.last_name}`,
+            username: `${values.username}`,
+            email: `${values.email}`,
+            phone_number: `${values.phone_number}`,
+            password: `${values.confirm_password}`
+        }
+        console.log(obj, "obj obj")
+        axios.post("/auth/general-user-register", obj, {
+            header: {
+                "Access-Control-Allow-Origin": "*"
+            }
+        })
+            .then(res => {
+                toast.dark(res.data.message, {
+                    position: toast.POSITION.BOTTOM_RIGHT
+                });
+                redirect("/login")
+        })
     };
 
     const onFinishFailed = (errorInfo) => {
@@ -32,7 +55,7 @@ function GeneralUserReg() {
                         <div className='col-lg-6'>
                             <Form.Item
                                 label="First Name"
-                                name="FirstName"
+                                name="first_name"
                                 className="form-group form-box"
                                 rules={[
                                     {
@@ -44,15 +67,30 @@ function GeneralUserReg() {
                                 <Input className="form-control" />
                             </Form.Item>
                         </div>
-                        <div className='col-lg-6'>
+                        <div className='col-lg-2'>
                             <Form.Item
                                 label="Last Name"
-                                name="lastName"
+                                name="last_name"
                                 className="form-group form-box"
                                 rules={[
                                     {
                                         required: true,
                                         message: 'Please input Last Name!',
+                                    },
+                                ]}
+                            >
+                                <Input className="form-control" />
+                            </Form.Item>
+                        </div>
+                        <div className='col-lg-4'>
+                            <Form.Item
+                                label="User Name"
+                                name="username"
+                                className="form-group form-box"
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: 'Please input User Name!',
                                     },
                                 ]}
                             >
@@ -77,7 +115,7 @@ function GeneralUserReg() {
                         <div className='col-lg-6'>
                             <Form.Item
                                 label="Contact No"
-                                name="contactno"
+                                name="phone_number"
                                 className="form-group form-box"
                                 rules={[
                                     {
@@ -107,7 +145,7 @@ function GeneralUserReg() {
                         </div>
                         <div className='col-lg-6'>
                             <Form.Item
-                                name="confirm"
+                                name="confirm_password"
                                 label="Confirm Password"
                                 dependencies={['password']}
                                 hasFeedback

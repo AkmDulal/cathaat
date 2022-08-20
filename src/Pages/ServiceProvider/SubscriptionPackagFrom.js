@@ -1,23 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap'
+import { useParams } from 'react-router-dom'
 import { PageHeader, Form, Input, Radio } from "antd";
 import { StepPanel } from "./StepPanel";
 import { RiCheckDoubleFill } from "react-icons/ri";
+import axios from "../../Helper/Config";
 // import { Link } from 'react-router-dom'
 function SubscriptionPackagFrom() {
     const [stepForm] = Form.useForm();
     const [form] = Form.useForm();
     const { TextArea } = Input;
+    const [ServiceName, SetServiceName] = useState([])
+    const { id } = useParams();
+    const [FromeList, SetFromList] = useState({
+        FirstName : []
+    })
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
-    form.setFieldsValue({
-        cFirstName: "Customer Name",
-        clastName: "Customer Last Name",
-        cEmail: "customer@gamil.com",
-        cContactno: "0123456789",
-        cAddress: "23, Ring Road, Shamoli, Dhaka",
-    });
+    // form.setFieldsValue({
+    //     cFirstName: form.getFieldValue("FirstName"),
+    //     clastName: "Customer Last Name",
+    //     cEmail: "customer@gamil.com",
+    //     cContactno: "0123456789",
+    //     cAddress: "23, Ring Road, Shamoli, Dhaka",
+    // });
+    const dataSet = (e) => {
+        // SetFromList(e.target.value)
+    }
+    console.log(FromeList)
     const Step1Form = () => {
         return (
             <>
@@ -40,6 +51,8 @@ function SubscriptionPackagFrom() {
                                     label="First Name"
                                     name="FirstName"
                                     className="form-group form-box"
+                                    // onChange={dataSet}
+                                    onChange={(e)=> SetFromList(e.target.value)}
                                     rules={[
                                         {
                                             required: true,
@@ -437,6 +450,14 @@ function SubscriptionPackagFrom() {
         // POST the data to backend and show Notification
         console.log(formData);
     };
+    useEffect(() => {
+        axios.get("/auth/active-packages")
+            .then(res => {
+                const foundData = res.data.data.packages.find(obj => obj.id === Number(id))
+                SetServiceName(foundData)
+            })
+    }, [])
+    console.log(ServiceName);
 
     const steps = [
         {
@@ -474,20 +495,20 @@ function SubscriptionPackagFrom() {
                                 </div>
                                 <div className='subscriptionPackagFrom_price'>
                                     <h3> Price </h3>
-                                    <p> ৳2000 </p>
+                                    <p> ৳{ServiceName.price} </p>
                                 </div>
                             </div>
                             <div className='subscriptionPackagFrom__contant'>
                                 <h3> Details </h3>
                                 <ul>
-                                    <li> <RiCheckDoubleFill /> 6 Month Subscription </li>
-                                    <li><RiCheckDoubleFill /> Unlimited item Showcasing </li>
-                                    <li><RiCheckDoubleFill />  Online & Offline Booking </li>
-                                    <li><RiCheckDoubleFill />  Reports </li>
+                                    {ServiceName.features?.map((fItem, i) => (
+                                        <li key={i}> <RiCheckDoubleFill /> {fItem.feature.name} </li>
+                                    ))}
                                 </ul>
                             </div>
                         </div>
                     </Col>
+
                     <Col lg={9} className="d-flex align-items-stretch">
                         <div className='card subscriptionPackagFrom__from'>
                             <PageHeader title="Subscription Form Fill-up">

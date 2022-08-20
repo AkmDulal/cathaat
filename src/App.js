@@ -42,7 +42,7 @@ function App() {
             <Route path="/login" element={<LoginPages />}></Route>
             <Route path="/forgot-password" element={<ForgotPassword />}></Route>
             <Route path="/services-provider-registration" element={<ServicesProviderRegistration />}></Route>
-            <Route path="/services-provider-registration-from" element={<SubscriptionPackagFrom />}></Route>
+            <Route path="/services-provider-registration-from/:id" element={<SubscriptionPackagFrom />}></Route>
           </Route>
         </Routes>
       </Layout>

@@ -8,11 +8,12 @@ import axios from "../../Helper/Config";
 import { createCookieInHour, COOKIE_NAME } from '../../Helper/Cookies';
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
-
+import { VscDebugRestart } from "react-icons/vsc";
 function LoginPages() {
     // const { Option } = Select;
     const [form] = Form.useForm();
     const [loginPhone, setLoginPhone] = useState(false)
+    const [loading, setLoading] = useState(false)
     const [OTP, setOTP] = useState("");
     const redirect = useNavigate();
     // Model
@@ -29,6 +30,8 @@ function LoginPages() {
             user_id: `${values.user_id}`,
             password: `${values.password}`
         }
+
+        setLoading(true)
         axios.post("/auth/login", obj)
             .then(res => {
                 if (res.data.code === 200) {
@@ -36,6 +39,9 @@ function LoginPages() {
                     toast.dark(res.data.message, {
                         position: toast.POSITION.BOTTOM_RIGHT
                     });
+                    setTimeout(() => {
+                        setLoading(false);
+                    }, 2000);
                     axios.interceptors.request.use(
                         config => {
                             config.headers['Authorization'] = `Bearer ${res.data.data.token}`;
@@ -114,7 +120,10 @@ function LoginPages() {
                                         <Link to="/forgot-password" className="forgot-password">Forgot Password</Link>
                                     </Form.Item>
                                     <div className="form-group">
-                                        <button type="submit" className="btn-md btn-theme w-100">Login</button>
+                                        <button disabled={loading}>
+                                            {loading && <span className='disabled__ '> <VscDebugRestart /> Submit...</span>}
+                                            {!loading && <span  className='button_login'>Login</span>}
+                                        </button>
                                     </div>
                                     <ul className="social-list clearfix">
                                         <li><Link to="/" className="facebook-bg"><RiFacebookLine /></Link></li>
@@ -156,7 +165,18 @@ function LoginPages() {
                                         <Link to="/forgot-password" className="forgot-password">Forgot Password</Link> */}
                                     </Form.Item>
                                     <div className="form-group">
-                                        <button onClick={showModal} type="submit" className="btn-md btn-theme w-100">Login</button>
+                                        {/* <button onClick={showModal} disabled={loading} className="btn-md btn-theme w-100"> */}
+                                        <button onClick={showModal} disabled={loading}>
+                                            {loading && (
+                                                // <i
+                                                //     className="fa fa-refresh fa-spin"
+                                                //     style={{ marginRight: "5px" }}
+                                                // />
+                                                <p style={{ marginRight: "5px" }}>  01 </p>
+                                            )}
+                                            {loading && <span>Submit</span>}
+                                            {!loading && <span>Login</span>}
+                                        </button>
                                     </div>
                                     <ul className="social-list clearfix">
                                         <li><Link to="/" className="facebook-bg"><RiFacebookLine /></Link></li>

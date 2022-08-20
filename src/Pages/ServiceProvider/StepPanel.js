@@ -4,8 +4,9 @@ import { Button, Steps } from "antd";
 const StepPanel = (props) => {
     const [activeStep, setActiveStep] = useState(0);
 
-    function next() {
+    function next(e) {
         const nextStep = activeStep + 1;
+        console.log(Steps, "Steps Steps")
         setActiveStep(nextStep);
     }
 

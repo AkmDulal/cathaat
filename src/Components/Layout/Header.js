@@ -21,12 +21,15 @@ function Header() {
     const redirect = useNavigate()
     const [BannerShow, setBannerShow] = useState(true)
     const [ActiveToken, setActiveToken] = useState(false)
+    const [cUserName, setUserNAme] = useState([])
     // const axiosPrivate = useAxiosPrivate();
     useEffect(() => {
         if (Number(userActive) === 0) {
             setActiveToken(false)
         } else {
             setActiveToken(true)
+            const UserName = localStorage.getItem("Username") || ""
+            setUserNAme(UserName)
         }
     }, [userActive])
     const bannerOff = () => {
@@ -53,7 +56,6 @@ function Header() {
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
-    const UserName = localStorage.getItem("Username") || ""
     const LogoutFunction = () => {
         // console.log(userLogout, "userLogoutuserLogout")
         axiosPrivate.post("/auth/logout")
@@ -104,7 +106,7 @@ function Header() {
                     <div className='logo_serach_area'>
                         <Container>
                             <Row>
-                                <Col xs={6} lg={4}>
+                                <Col xs={8} lg={4}>
                                     <div className='header_logo'>
                                         <Link to="/"> <img className='img-fit' src={Logo} alt="" /></Link>
                                         <Link to="/neearest-shop-locations">
@@ -115,7 +117,7 @@ function Header() {
                                         </Link>
                                     </div>
                                 </Col>
-                                <Col xs={6} lg={8}>
+                                <Col xs={4} lg={8}>
                                     <div className='rasponsive__menu_icon'>
                                         <MobileCatagories />
                                     </div>
@@ -272,7 +274,7 @@ function Header() {
                                     <div className='profile_menu_header'>
                                         <Dropdown overlay={menu}>
                                             <Space>
-                                                {UserName}
+                                                {cUserName}
                                                 <DownOutlined />
                                             </Space>
                                         </Dropdown>

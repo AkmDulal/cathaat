@@ -46,7 +46,7 @@ li {
 	padding: 0px;
 	margin: 0px;
 	list-style: none;
-	margin: 0px !important;
+	/* margin: 0px !important; */
 }
 
 h1,
@@ -1949,18 +1949,6 @@ input[type=radio] {
 	border-top: 1px solid #f4d6d6;
 }
 
-.from_home_area button {
-	background: #ed1d24;
-	border: none;
-	width: auto;
-	padding: 8px 30px;
-	margin: auto;
-	margin-top: 10px;
-	border-radius: 2px;
-	font-size: 16px;
-	color: #fff;
-}
-
 .three_catagori_box {
 	margin-bottom: 45px;
 }
@@ -2559,3 +2547,52 @@ input[type=radio] {
 	background: transparent;
 	border: none;
 }
+.button:disabled {
+	opacity: 0.5 !important;
+  }
+  .from_home_area .disabled__ {
+	background: #f6878a;
+	border: none;
+	width: auto;
+	padding: 8px 30px;
+	margin: auto;
+	margin-top: 10px;
+	border-radius: 2px;
+	font-size: 16px;
+	/* opacity: 0.5 !important; */
+	color: #222;
+}
+.from_home_area .button_login {
+	background: #ed1d24;
+	border: none;
+	width: auto;
+	padding: 8px 30px;
+	margin: auto;
+	margin-top: 10px;
+	border-radius: 2px;
+	font-size: 16px;
+	color: #fff;
+}
+.disabled__ svg {
+	animation-name: spin;
+  animation-duration: 2s;
+  animation-delay: 0s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  margin-right: 5px;
+}
+
+@keyframes spin {
+	0%{
+	  transform: rotate(0deg);
+	}
+	100%{
+	  transform: rotate(360deg);
+	}
+  }
+  
+  @keyframes appear {
+	100%{
+	  opacity: 1;
+	}
+  }

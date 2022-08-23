@@ -16,6 +16,13 @@ import ForgotPassword from "./Pages/ForgotPassword"
 import ServicesProviderRegistration from "./Pages/ServiceProvider/ServicesProviderRegistration"
 import SubscriptionPackagFrom from "./Pages/ServiceProvider/SubscriptionPackagFrom"
 import NeearShopMap from "./Pages/NeearShopMap"
+import AboutUs from "./Pages/AboutUs"
+import PrivacyPolicy from "./Pages/PrivacyPolicy"
+import ReturnsRefunds from "./Pages/ReturnsRefunds"
+import ContactUs from "./Pages/ContactUs"
+import FawPages from "./Pages/FawPages"
+import FaqDetails from "./Pages/FaqDetails"
+
 function App() {
   // const { setAuth } = useAuth();
   const userData = AuthService.getCurrentUser();
@@ -35,7 +42,13 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePages />}></Route>
           <Route path="/neearest-shop-locations" element={<NeearShopMap />}></Route>
-          
+          <Route path="/privacy-policy" element={<PrivacyPolicy />}></Route>
+          <Route path="/about-us" element={<AboutUs />}></Route>
+          <Route path="/returns-refunds" element={<ReturnsRefunds />}></Route>
+          <Route path="/contact-us" element={<ContactUs />}></Route>
+          <Route path="/faq" element={<FawPages />}></Route>
+          <Route path="/faq-details" element={<FaqDetails />}></Route>
+
           <Route element={<PrivateRoute isLogged={currentUser} />}>
             <Route path="/registration" element={<Registration />}></Route>
             <Route path="/generaluser-registration" element={<GeneralUserReg />}></Route>

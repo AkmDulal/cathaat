@@ -1,14 +1,14 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { Input, Radio, Select } from 'antd';
 import Iframe from 'react-iframe'
-
+import Mimg from "../assets/images/dmap.jpg"
 function NeearShopMap() {
     const { Search } = Input;
     const { Option } = Select;
     const [storeShow, setStoreShow] = useState(false)
     const dataSHow = (e) => {
         setStoreShow(true)
-        if(e === undefined) {
+        if (e === undefined) {
             setStoreShow(false)
         }
     }
@@ -38,26 +38,50 @@ function NeearShopMap() {
                             </div>
                             <h3> We are unable to access your exact location </h3>
                             <p> To find a Starbucks store, use the search feature, navigate using the map, or turn on location services. </p>
-                            {storeShow === false ? <> <p className='store__p'> 0 Store </p> </> : <> 
-                            <div className='kilo_mile_area'>
-                                <Radio.Group >
-                                    <Radio value={1}>1 Store Name</Radio>
-                                    <Radio value={2}>2 Store Name</Radio>
-                                    <Radio value={3}>3 Store Name</Radio>
-                                    <Radio value={4}>4 Store Name</Radio>
-                                    <Radio value={5}>5 Store Name</Radio>
-                                </Radio.Group>
-                            </div>
-                            <div className='kilo_mile_area'>
-                                <Radio.Group >
-                                    <Radio value={1}>1 Store Name</Radio>
-                                    <Radio value={2}>2 Store Name</Radio>
-                                    <Radio value={3}>3 Store Name</Radio>
-                                    <Radio value={4}>4 Store Name</Radio>
-                                    <Radio value={5}>5 Store Name</Radio>
-                                </Radio.Group>
-                            </div>
-                             </>}
+                            {storeShow === false ? <> <p className='store__p'> 0 Store </p> </> : <>
+                                <div className='kilo_mile_area'>
+                                    <div className='location__vox'>
+                                        <div className='l_box_cntn'>
+                                            <h3> স্বপ্ন বিলাস </h3>
+                                            <h6> No Reviews </h6>
+                                            <p> Apartment complex 33 Rd No 20 </p>
+                                        </div>
+                                        <div className='l_box_cntn_img'>
+                                            <img src={Mimg} alt="" />
+                                        </div>
+                                    </div>
+                                    <div className='location__vox'>
+                                        <div className='l_box_cntn'>
+                                            <h3> স্বপ্ন বিলাস </h3>
+                                            <h6> No Reviews </h6>
+                                            <p> Apartment complex 33 Rd No 20 </p>
+                                        </div>
+                                        <div className='l_box_cntn_img'>
+                                            <img src={Mimg} alt="" />
+                                        </div>
+                                    </div>
+                                    <div className='location__vox'>
+                                        <div className='l_box_cntn'>
+                                            <h3> স্বপ্ন বিলাস </h3>
+                                            <h6> No Reviews </h6>
+                                            <p> Apartment complex 33 Rd No 20 </p>
+                                        </div>
+                                        <div className='l_box_cntn_img'>
+                                            <img src={Mimg} alt="" />
+                                        </div>
+                                    </div>
+                                    <div className='location__vox'>
+                                        <div className='l_box_cntn'>
+                                            <h3> স্বপ্ন বিলাস </h3>
+                                            <h6> No Reviews </h6>
+                                            <p> Apartment complex 33 Rd No 20 </p>
+                                        </div>
+                                        <div className='l_box_cntn_img'>
+                                            <img src={Mimg} alt="" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </>}
                         </div>
                     </div>
                     <div className='col-lg-8 sNSearch'>

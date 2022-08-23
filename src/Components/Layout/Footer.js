@@ -48,11 +48,11 @@ function Footer() {
           <div className='col-sm-6 col-lg-3'>
             <div className='footer__box'>
               <h3> Resources    </h3>
-              <Link to="/">Contact Us</Link>
-              <Link to="/">About Us</Link>
-              <Link to="/">Wishlist</Link>
-              <Link to="/">Privacy Policy</Link>
-              <Link to="/">Frequently</Link>
+              <Link to="/contact-us">Contact Us</Link>
+              <Link to="/about-us">About Us</Link>
+              <Link to="/faq">Faq</Link>
+              <Link to="/privacy-policy">Privacy Policy</Link>
+              <Link to="/returns-refunds"> Returns & Refunds </Link>
             </div>
           </div>
           <div className='col-sm-6 col-lg-3'>

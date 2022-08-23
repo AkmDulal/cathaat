@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import { RiCheckDoubleFill } from "react-icons/ri";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { Skeleton } from 'antd';
 import axios from "../../Helper/Config";
 function ServicesProviderRegistration() {
     const [GrageList, SetGrageList] = useState([])
@@ -23,12 +24,12 @@ function ServicesProviderRegistration() {
                                 <p className='animate-charcter'> Service Center And Garage </p>
                             </Col>
                             {GrageList.packages?.map((item, i) => (
-                                <Col lg={3} key={i} className="d-flex data_one align-items-stretch">
+                                <Col lg={4} key={i} className="d-flex data_one align-items-stretch">
                                     <div className="card trans_wrapper">
                                         <div className="trans_table_wrapper">
                                             <div className="trans_package_name_shape_1"></div>
                                             <div className="trans_package_name_shape_2"></div>
-                                            <div className="trans_package_name">Starter</div>
+                                            <div className="trans_package_name">{item.name}</div>
                                             <div className="trans_package_highlights">
                                                 <div className="trans_package_price">৳ {item?.price}<span>/ monthly</span></div>
                                                 <div className="trans_package_users"><i className="fas fa-users"></i> <span>05</span> Users</div>
@@ -40,14 +41,38 @@ function ServicesProviderRegistration() {
                                                 ))}
                                             </ul>
                                             <div className="trans_package_button">
-                                                <Link  to={`/services-provider-registration-from/${item.id}`}> Subscribe Now </Link>
+                                                <Link to={`/services-provider-registration-from/${item.id}`}> Subscribe Now </Link>
                                             </div>
                                         </div>
                                     </div>
                                 </Col>
-                             ))}
+                            ))}
                         </Row>
-                    </> : <> </>}
+                    </> : <>
+                        <Row>
+                            <Col lg={4}>
+                                <Skeleton
+                                    paragraph={{
+                                        rows: 4,
+                                    }}
+                                />
+                            </Col>
+                            <Col lg={4}>
+                                <Skeleton
+                                    paragraph={{
+                                        rows: 4,
+                                    }}
+                                />
+                            </Col>
+                            <Col lg={4}>
+                                <Skeleton
+                                    paragraph={{
+                                        rows: 4,
+                                    }}
+                                />
+                            </Col>
+                        </Row>
+                    </>}
 
 
                     <Row className='parts_sellers_areaa  mt-5'>

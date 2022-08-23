@@ -19,7 +19,7 @@ function GeneralUserReg() {
             password: `${values.confirm_password}`
         }
         console.log(obj, "obj obj")
-        axios.post("/auth/general-user-register", obj, {
+        axios.post("/auth/general-user-registration", obj, {
             header: {
                 "Access-Control-Allow-Origin": "*"
             }

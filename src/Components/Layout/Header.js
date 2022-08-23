@@ -266,10 +266,10 @@ function Header() {
                         <Container>
                             <ul>
                                 <li><Link className='color__hdr' to="/"> Home</Link></li>
-                                <li><Link className='color__hdr' to="/">About</Link></li>
+                                <li><Link className='color__hdr' to="/about-us">About</Link></li>
                                 <li><Link to="/">Services</Link></li>
                                 <li><Link to="/">Shop</Link></li>
-                                <li><Link to="/">Contact Us</Link></li>
+                                <li><Link to="/contact-us">Contact Us</Link></li>
                                 {ActiveToken === true ? <>
                                     <div className='profile_menu_header'>
                                         <Dropdown overlay={menu}>
